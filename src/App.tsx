@@ -9,10 +9,10 @@ const navLinks = [
 const languages = ['EN', 'DE', 'UA']
 
 const services = [
-  { name: 'Landing pages', text: 'Лендинги, що ведуть до дії' },
+  { name: 'Landing pages', text: 'Лендинги з чіткою метою і дією' },
   { name: 'APPs', text: 'Мобільні застосунки з продуманим UX' },
   { name: 'Web Services', text: 'Вебсервіси від дослідження до релізу' },
-  { name: 'Coding', text: 'Верстка і React без втрат з Figma' },
+  { name: 'Coding', text: 'Верстка та код сайтів: HTML, CSS, React' },
 ]
 
 function App() {
