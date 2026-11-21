@@ -1,3 +1,4 @@
+// Перший екран за планом: docs/site-plan.md (розділи 1 і 3, блок «Перший екран»)
 const navLinks = [
   { label: 'Кейси', href: '#cases' },
   { label: 'Про мене', href: '#about' },
@@ -7,11 +8,16 @@ const navLinks = [
 
 const languages = ['EN', 'DE', 'UA']
 
-const services = ['landg pages', 'APPs', 'Web Services', 'Coding']
+const services = [
+  { name: 'Landing pages', text: 'Лендинги, що ведуть до дії' },
+  { name: 'APPs', text: 'Мобільні застосунки з продуманим UX' },
+  { name: 'Web Services', text: 'Вебсервіси від дослідження до релізу' },
+  { name: 'Coding', text: 'Верстка і React без втрат з Figma' },
+]
 
 function App() {
   return (
-    <main className="hero">
+    <main className="hero" id="top">
       <header className="header">
         <nav className="nav" aria-label="Основна навігація">
           {navLinks.map((link) => (
@@ -31,34 +37,57 @@ function App() {
               </button>
             ))}
           </div>
-          <a className="btn btn-write" href="#contacts">
-            Написати
+          <a className="btn btn-write" href="/cv.pdf" download>
+            Завантажити CV
           </a>
         </div>
       </header>
 
-      <section className="intro" id="top">
-        <h1>
-          Проєктую інтерфейси і сама перетворюю їх на код:
-        </h1>
-        <p className="subtitle">Від дослідження й Figma до живого сайту</p>
-        <div className="actions">
-          <a className="btn btn-primary" href="#cases">
-            Дивитися кейси
-          </a>
-          <a className="btn btn-outline" href="#contacts">
-            Залишити повідомлення
-          </a>
+      <section className="intro">
+        <div className="intro-text">
+          <p className="role rise" style={{ '--d': '0ms' } as React.CSSProperties}>
+            UI/UX Designer · UI/UX Engineer
+          </p>
+          <h1 className="rise" style={{ '--d': '100ms' } as React.CSSProperties}>
+            Проєктую інтерфейси і сама перетворюю їх на робочий код
+          </h1>
+          <p className="subtitle rise" style={{ '--d': '200ms' } as React.CSSProperties}>
+            від дослідження та Figma до живого сайту
+          </p>
+          <div className="actions rise" style={{ '--d': '300ms' } as React.CSSProperties}>
+            <a className="btn btn-primary" href="#cases">
+              Дивитися кейси
+            </a>
+            <a className="btn btn-outline" href="#contacts">
+              Написати
+            </a>
+          </div>
+          <p className="meta rise" style={{ '--d': '400ms' } as React.CSSProperties}>
+            Фултайм · Швейцарія
+          </p>
+        </div>
+
+        {/* Місце для головного графічного елемента з анімацією завантаження */}
+        <div className="art" aria-hidden="true">
+          <span className="blob blob-a" />
+          <span className="blob blob-b" />
+          <span className="blob blob-c" />
+          <span className="art-code">{'</>'}</span>
         </div>
       </section>
 
       <ul className="services">
-        {services.map((name) => (
-          <li key={name} className="card">
+        {services.map((s, i) => (
+          <li
+            key={s.name}
+            className="card rise"
+            style={{ '--d': `${500 + i * 100}ms` } as React.CSSProperties}
+          >
             <span className="card-icon" aria-hidden="true">
               #
             </span>
-            <span className="card-label">{name}</span>
+            <strong className="card-title">{s.name}</strong>
+            <span className="card-text">{s.text}</span>
           </li>
         ))}
       </ul>

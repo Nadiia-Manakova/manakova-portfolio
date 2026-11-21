@@ -1,14 +1,14 @@
 :root {
-  --bg: #ffffff;
-  --hero-bg: #ebebeb;
-  --card-bg: #e1e1e1;
-  --text: #0d0d0d;
-  --brown: #2b1a0c;
-  --pill: #d3d3d3;
+  /* Палітра з плану: docs/site-plan.md */
+  --orange: #e29136;
+  --cream: #ffeece;
+  --peach: #ffdebd;
+  --text: #2e1b06;
   --gutter: clamp(16px, 8.3vw, 94px);
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Unbounded', 'Onest', system-ui, sans-serif;
+  font-family: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background: var(--cream);
 }
 
 *,
@@ -19,7 +19,7 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--cream);
 }
 
 a {
@@ -28,9 +28,9 @@ a {
 }
 
 .hero {
-  background: linear-gradient(var(--hero-bg) calc(100% - 40px), var(--bg) 0);
-  padding: 0 var(--gutter) 40px;
   min-height: 100vh;
+  padding: 0 var(--gutter) 64px;
+  background: var(--cream);
 }
 
 /* Header */
@@ -45,6 +45,7 @@ a {
 .nav {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 14px;
   font-size: 14px;
 }
@@ -54,20 +55,19 @@ a {
   margin-right: 14px;
 }
 
+.nav a:hover,
+.logo:hover {
+  color: var(--orange);
+}
+
 .logo {
   font-size: 20px;
   font-weight: 600;
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 24px;
-}
-
 .lang {
   display: flex;
+  justify-content: flex-end;
   font-size: 17px;
 }
 
@@ -84,12 +84,9 @@ a {
   border-left: 1.5px solid var(--text);
 }
 
-.lang button:first-child {
-  padding-left: 0;
-}
-
 .lang button[aria-current='true'] {
   font-weight: 600;
+  color: var(--orange);
 }
 
 /* Buttons */
@@ -98,63 +95,80 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  font-size: 13px;
-  padding: 10px 14px;
-  border: 1px solid transparent;
-  transition: opacity 0.15s;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border: 1.5px solid var(--text);
+  transition: transform 0.15s, background 0.15s, color 0.15s;
 }
 
 .btn:hover {
-  opacity: 0.8;
-}
-
-.btn-write {
-  background: var(--pill);
-  padding: 10px 24px;
+  transform: translateY(-2px);
 }
 
 .btn-primary {
-  background: var(--brown);
-  color: #fff;
+  background: var(--text);
+  color: var(--cream);
 }
 
 .btn-outline {
-  border-color: var(--brown);
-  color: var(--brown);
+  background: transparent;
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  background: var(--peach);
 }
 
 /* Intro */
 .intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
   padding-top: 72px;
+}
+
+.role {
+  margin: 0 0 20px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
 }
 
 h1 {
   margin: 0;
-  max-width: 14em;
-  font-size: clamp(36px, 5.6vw, 56px);
-  font-weight: 400;
-  line-height: 1.17;
-  letter-spacing: -0.01em;
-}
-
-.subtitle {
-  margin: 24px 0 0 4px;
-  font-size: 19px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
   font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
-.actions {
+.logo,
+.card-title {
+  font-family: var(--font-display);
+}
+
+.header-right {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 56px;
-  margin-left: 4px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
 }
 
-/* Service cards */
+.btn-write {
+  background: var(--peach);
+  border-color: transparent;
+  font-size: 13px;
+  padding: 10px 22px;
+}
+
 .services {
   list-style: none;
-  margin: 92px 0 0;
+  margin: 72px 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -164,14 +178,11 @@ h1 {
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  min-height: 124px;
-  padding: 24px 12px;
-  background: var(--card-bg);
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px 20px;
+  background: var(--peach);
   border-radius: 24px;
-  font-size: 14px;
 }
 
 .card-icon {
@@ -179,10 +190,131 @@ h1 {
   place-items: center;
   width: 41px;
   height: 41px;
+  margin-bottom: 8px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--cream);
   font-size: 22px;
-  line-height: 1;
+  color: var(--orange);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.subtitle {
+  margin: 24px 0 0;
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.meta {
+  margin: 28px 0 0;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Графічний елемент */
+.art {
+  position: relative;
+  aspect-ratio: 1;
+  width: min(100%, 440px);
+  justify-self: center;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  animation: pop 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    float 7s ease-in-out 1s infinite;
+}
+
+.blob-a {
+  inset: 4% 22% 38% 4%;
+  background: var(--orange);
+}
+
+.blob-b {
+  inset: 30% 4% 8% 30%;
+  background: var(--peach);
+  animation-delay: 0.15s, 1.2s;
+}
+
+.blob-c {
+  inset: 22% 36% 30% 22%;
+  background: var(--text);
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  animation-delay: 0.3s, 1.4s;
+}
+
+.art-code {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
+  color: var(--cream);
+  animation: fade 1s 0.7s both;
+}
+
+/* Анімація завантаження */
+.rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .blob,
+  .art-code {
+    animation: none;
+  }
 }
 
 /* Responsive */
@@ -192,20 +324,17 @@ h1 {
     justify-items: start;
   }
 
-  .header-right {
+  .lang {
     justify-content: flex-start;
   }
 
-  .nav {
-    flex-wrap: wrap;
-  }
-
-  .services {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 56px;
-  }
-
   .intro {
+    grid-template-columns: 1fr;
     padding-top: 40px;
+  }
+
+  .art {
+    width: min(100%, 320px);
+    justify-self: start;
   }
 }
